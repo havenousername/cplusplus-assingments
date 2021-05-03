@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1620077338 source:c:\users\andrei\documents\3rdassignment\main.cpp
+	<iostream>
+	"Pet.h"
+
+1620077657 c:\users\andrei\documents\3rdassignment\include\rangedinteger.hpp
+	<stdexcept>
+	<sstream>
+	<iostream>
+
+1620071288 source:c:\users\andrei\documents\3rdassignment\src\pet.cpp
+	"pet.h"
+
+1620071499 c:\users\andrei\documents\3rdassignment\include\pet.h
+	"rangedinteger.hpp"
+
