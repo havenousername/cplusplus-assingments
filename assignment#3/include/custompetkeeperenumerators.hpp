@@ -78,12 +78,14 @@ private:
     RawPet *_current;
     SeqInFileEnumerator<std::string> *_f;
     bool _end;
+    int _cursorSkip;
 public:
-    SeqInFileEnumeratorPets(const std::string& filename)
+    SeqInFileEnumeratorPets(const std::string& filename, int cursorSkip = 0)
     {
         _f = new SeqInFileEnumerator<std::string>(filename);
         _current = new RawPet();
         _end = false;
+        _cursorSkip = cursorSkip;
     };
 
     ~SeqInFileEnumeratorPets()
@@ -127,6 +129,12 @@ public:
         if (_end)
         {
             return;
+        }
+
+        while (_cursorSkip != 0)
+        {
+            _f->next();
+            _cursorSkip--;
         }
 
         try

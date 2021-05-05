@@ -13,16 +13,18 @@ private:
     std::vector<Day*> _days;
     SeqInFileEnumeratorPets _petsEnor;
     SeqInFileEnumeratorDays _daysEnor;
+    SeqInFileEnumerator<int> _enor;
     std::string _name;
+    std::string _filename;
 public:
-    PetKeeper(const std::string& filename, const std::string& name = "Cathy"): _name(name), _petsEnor(filename), _daysEnor(filename)
+    PetKeeper(const std::string& filename, const std::string& name = "Cathy"):
+         _name(name), _petsEnor(filename, 1), _daysEnor(filename), _enor(filename), _filename(filename)
     {
         _pets.clear();
         _days.clear();
     }
 
     void populate();
-    void unpopulate();
     void daysSimulation();
     std::vector<std::string> getLowestExhalationAlive() const;
 

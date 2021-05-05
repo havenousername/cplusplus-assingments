@@ -4,11 +4,11 @@
 
 void PetKeeper::populate()
 {
+    _enor.first();
     // populate pets
-    int i = 0;
-    for (_petsEnor.first(); !_petsEnor.end(); _petsEnor.next())
+    int i = _enor.current();
+    for (_petsEnor.first(); !_petsEnor.end() && _pets.size() != i; _petsEnor.next())
     {
-        i++;
         switch(_petsEnor.current().type())
         {
             case RawPetType::FISH :

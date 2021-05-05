@@ -5,13 +5,17 @@
 
 
 using std::cout;
+using std::cin;
 using std::endl;
 using std::vector;
 using std::string;
 
 int main()
 {
-    PetKeeper* petKeeper = new PetKeeper("test01.txt", "Cathy");
+    cout << "Please enter the name of the file for taking animals and days" << endl;
+    std::string filename;
+    cin >> filename;
+    PetKeeper* petKeeper = new PetKeeper(filename);
     petKeeper->populate();
     petKeeper->daysSimulation();
 
