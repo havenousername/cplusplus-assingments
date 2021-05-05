@@ -14,17 +14,15 @@
 1620071499 c:\users\andrei\documents\3rdassignment\include\pet.h
 	"rangedinteger.hpp"
 
-1620176356 source:c:\users\andrei\documents\3rdassignment\assignment#3\main.cpp
+1620193456 source:c:\users\andrei\documents\3rdassignment\assignment#3\main.cpp
 	<iostream>
-	"Pet.h"
-	"rangedinteger.hpp"
-	"seqinfileenumerator.hpp"
-	<limits>
+	"custompetkeeperenumerators.hpp"
 
-1620162853 c:\users\andrei\documents\3rdassignment\assignment#3\include\pet.h
+1620193836 c:\users\andrei\documents\3rdassignment\assignment#3\include\pet.h
 	<string>
 	"rangedinteger.hpp"
 	"day.h"
+	"enums.hpp"
 
 1620175521 c:\users\andrei\documents\3rdassignment\assignment#3\include\rangedinteger.hpp
 	<stdexcept>
@@ -40,9 +38,10 @@
 1620163742 source:c:\users\andrei\documents\3rdassignment\assignment#3\src\petkeeper.cpp
 	"petkeeper.h"
 
-1620164225 c:\users\andrei\documents\3rdassignment\assignment#3\include\petkeeper.h
+1620194758 c:\users\andrei\documents\3rdassignment\assignment#3\include\petkeeper.h
 	"pet.h"
 	"day.h"
+	"custompetkeeperenumerators.hpp"
 	<vector>
 
 1620174560 c:\users\andrei\documents\3rdassignment\assignment#3\include\seqinfileenumerator.hpp
@@ -52,4 +51,14 @@
 	<sstream>
 
 1620164444 c:\users\andrei\documents\3rdassignment\assignment#3\include\enumerator.hpp
+
+1620193774 c:\users\andrei\documents\3rdassignment\assignment#3\include\custompetkeeperenumerators.hpp
+	<iostream>
+	<string>
+	"seqinfileenumerator.hpp"
+	"rangedinteger.hpp"
+	"enumerator.hpp"
+	"enums.hpp"
+
+1620193753 c:\users\andrei\documents\3rdassignment\assignment#3\include\enums.hpp
 

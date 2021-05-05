@@ -4,17 +4,18 @@
 #include <string>
 #include "rangedinteger.hpp"
 #include "day.h"
+#include "enums.hpp"
 
 class Pet
 {
 protected:
     std::string _name;
-    BoundedValue<int, 0, 100> _exhalationLevel;
+    BoundedValue<int, HealthRange::EMPTY, HealthRange::FULL> _exhalationLevel;
 public:
-    Pet(std::string& name, int exhalationLevel = 0) : _name(name), _exhalationLevel(exhalationLevel) {}
+    Pet(std::string& name, int exhalationLevel = HealthRange::EMPTY) : _name(name), _exhalationLevel(exhalationLevel) {}
     bool alive() const
     {
-        return _exhalationLevel.getVal() > 0;
+        return _exhalationLevel.getVal() > HealthRange::EMPTY;
     }
     std::string getName() const
     {
