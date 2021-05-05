@@ -34,11 +34,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/custompetkeeperenumerators.hpp" />
 		<Unit filename="include/day.h" />
+		<Unit filename="include/enumerator.hpp" />
+		<Unit filename="include/enums.hpp" />
 		<Unit filename="include/pet.h" />
+		<Unit filename="include/petkeeper.h" />
 		<Unit filename="include/rangedinteger.hpp" />
+		<Unit filename="include/seqinfileenumerator.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/day.cpp" />
+		<Unit filename="src/petkeeper.cpp" />
+		<Unit filename="test01.txt" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
