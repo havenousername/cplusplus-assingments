@@ -1,5 +1,6 @@
 #ifndef PETKEEPER_H
 #define PETKEEPER_H
+
 #include "pet.h"
 #include "day.h"
 #include "custompetkeeperenumerators.hpp"
@@ -23,8 +24,19 @@ public:
     void populate();
     void unpopulate();
     void daysSimulation();
-    std::string getLowestExhalationAlive() const;
+    std::vector<std::string> getLowestExhalationAlive() const;
 
+    ~PetKeeper()
+    {
+        for (int i = 0; i < _pets.size(); i++)
+        {
+            delete _pets[i];
+        }
+
+        BadDay::destroy();
+        GoodDay::destroy();
+        NormalDay::destroy();
+    }
 };
 
 #endif // PETKEEPER_H

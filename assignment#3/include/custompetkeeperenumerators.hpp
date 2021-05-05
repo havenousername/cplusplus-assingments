@@ -176,6 +176,11 @@ public:
         _current = 0;
     }
 
+    void passIterations(int p)
+    {
+        _passIterations = p;
+    }
+
     ~SeqInFileEnumeratorDays()
     {
         delete _enor;

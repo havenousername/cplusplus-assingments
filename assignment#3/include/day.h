@@ -22,6 +22,14 @@ public:
     Day* influence(Bird *p) override;
     Day* influence(Fish *p) override;
     Day* influence(Dog *p) override;
+    void static destroy()
+    {
+        if (nullptr != _instance)
+        {
+            delete _instance;
+            _instance = nullptr;
+        }
+    }
 protected:
     GoodDay() {}
 private:
@@ -36,6 +44,14 @@ public:
     Day* influence(Bird *p) override;
     Day* influence(Fish *p) override;
     Day* influence(Dog *p) override;
+    void static destroy()
+    {
+        if (nullptr != _instance)
+        {
+            delete _instance;
+            _instance = nullptr;
+        }
+    }
 protected:
     BadDay() {}
 private:
@@ -49,6 +65,14 @@ public:
     Day* influence(Bird *p) override;
     Day* influence(Fish *p) override;
     Day* influence(Dog *p) override;
+    void static destroy()
+    {
+        if (nullptr != _instance)
+        {
+            delete _instance;
+            _instance = nullptr;
+        }
+    }
 protected:
     NormalDay() {}
 private:

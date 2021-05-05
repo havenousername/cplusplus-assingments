@@ -1,27 +1,27 @@
 #include <iostream>
-#include "custompetkeeperenumerators.hpp"
+#include <vector>
+#include "petkeeper.h"
 
 
 
 using std::cout;
 using std::endl;
+using std::vector;
+using std::string;
 
 int main()
 {
-    SeqInFileEnumeratorPets enor = SeqInFileEnumeratorPets("test01.txt");
+    PetKeeper* petKeeper = new PetKeeper("test01.txt", "Cathy");
+    petKeeper->populate();
+    petKeeper->daysSimulation();
 
-    int i = 0;
-    for(enor.first(); !enor.end(); enor.next())
+    vector<string> stillAlive = petKeeper->getLowestExhalationAlive();
+
+    for (int i = 0; i < stillAlive.size(); i++)
     {
-        cout << enor.current().type() << " : " <<enor.current().exhalationLevel() << " : " << enor.current().name() << endl;
-        i++;
+        cout << stillAlive[i] << endl;
     }
 
-    SeqInFileEnumeratorDays e = SeqInFileEnumeratorDays("test01.txt", i);
-    for (e.first(); !e.end(); e.next())
-    {
-        cout << e.current() << endl;
-    }
-
+    delete petKeeper;
     return 0;
 }

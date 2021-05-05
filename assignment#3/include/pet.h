@@ -2,6 +2,7 @@
 #define PET_H
 
 #include <string>
+#include <stdlib.h>
 #include "rangedinteger.hpp"
 #include "day.h"
 #include "enums.hpp"
@@ -12,7 +13,7 @@ protected:
     std::string _name;
     BoundedValue<int, HealthRange::EMPTY, HealthRange::FULL> _exhalationLevel;
 public:
-    Pet(std::string& name, int exhalationLevel = HealthRange::EMPTY) : _name(name), _exhalationLevel(exhalationLevel) {}
+    Pet(const std::string& name, int exhalationLevel = HealthRange::EMPTY) : _name(name), _exhalationLevel(exhalationLevel) {}
     bool alive() const
     {
         return _exhalationLevel.getVal() > HealthRange::EMPTY;
@@ -22,9 +23,23 @@ public:
         return _name;
     }
 
+    int getExhalationLevel()
+    {
+        return _exhalationLevel.getVal();
+    }
+
     void changeLevel(int level)
     {
-        _exhalationLevel = _exhalationLevel + level;
+        bool isNegative = level < 0;
+        int levl = abs(level);
+        if (isNegative)
+        {
+            _exhalationLevel = _exhalationLevel - levl;
+        }
+        else
+        {
+            _exhalationLevel = _exhalationLevel + levl;
+        }
     }
 
     virtual void react(Day* &day) = 0;
@@ -34,19 +49,31 @@ public:
 class Fish : public Pet
 {
 public:
-    Fish(std::string& name, int exhalationLevel) : Pet(name, exhalationLevel) {};
+    Fish(const std::string& name, int exhalationLevel) : Pet(name, exhalationLevel) {};
+    void react(Day* &day) override
+    {
+        day = day->influence(this);
+    }
 };
 
 class Bird : public Pet
 {
 public:
-    Bird(std::string& name, int exhalationLevel) : Pet(name, exhalationLevel) {};
+    Bird(const std::string& name, int exhalationLevel) : Pet(name, exhalationLevel) {};
+    void react(Day* &day) override
+    {
+        day = day->influence(this);
+    }
 };
 
 class Dog : public Pet
 {
 public:
-    Dog(std::string& name, int exhalationLevel) : Pet(name, exhalationLevel) {};
+    Dog(const std::string& name, int exhalationLevel) : Pet(name, exhalationLevel) {};
+    void react(Day* &day) override
+    {
+        day = day->influence(this);
+    }
 };
 
 
