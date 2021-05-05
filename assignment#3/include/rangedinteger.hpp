@@ -63,7 +63,7 @@ public:
         BOUNDED_VALUE_ASSERT(min_value, max_value, runtime_value);
     }
     // compile-time checked constructors:
-    BoundedValue(SelfType const& other) : val_(other) {}
+    BoundedValue(SelfType const& other) : val_(other.getVal()) {}
     BoundedValue(SelfType &&other) : val_(other) {}
 
     template <typename otherT, int otherTmin, int otherTmax>
@@ -85,9 +85,10 @@ public:
                       "conversion disallowed from BoundedValue with lower min");
         static_assert(otherTmax <= Tmax,
                       "conversion disallowed from BoundedValue with higher max");
-        val_ = other; // will just fail if T, otherT not convertible
+        val_ = other.getVal(); // will just fail if T, otherT not convertible
         return *this;
     }
+
     // run-time checked assignment:
     BoundedValue& operator= (T const& val) {
         BOUNDED_VALUE_ASSERT(min_value, max_value, val);
@@ -95,7 +96,65 @@ public:
         return *this;
     }
 
-    getVal()
+    // compile-time checked assignments:
+    BoundedValue& operator+ (SelfType const& other) { val_ = other.getVal() + val_ > Tmax ? Tmax : other.getVal() + val_; return *this; }
+
+    template <typename otherT, int otherTmin, int otherTmax>
+    BoundedValue& operator+ (BoundedValue<otherT, otherTmin, otherTmax> const &other) {
+        static_assert(otherTmin >= Tmin,
+                      "conversion disallowed from BoundedValue with lower min");
+        static_assert(otherTmax <= Tmax,
+                      "conversion disallowed from BoundedValue with higher max");
+        val_ = val_ + other.getVal(); // will just fail if T, otherT not convertible
+        if (val_ > Tmax)
+        {
+            val_ = Tmax;
+        }
+        return *this;
+    }
+
+    // run-time checked assignment:
+    BoundedValue& operator+ (T const& val) {
+        BOUNDED_VALUE_ASSERT(min_value, max_value, val);
+        val_ += val;
+        if (val_ > Tmax)
+        {
+            val_ = Tmax;
+        }
+        return *this;
+    }
+
+    // compile-time checked - assingment
+    BoundedValue& operator- (SelfType const& other) {val_ = val_ - other.getVal() < Tmin ? Tmin : val_ - other.getVal(); return *this;}
+
+    template<typename otherT, int otherTmin, int otherTmax>
+    BoundedValue& operator- (BoundedValue<otherT, otherTmin, otherTmax> const &other)
+    {
+        static_assert(otherTmin >= Tmin,
+                      "conversion disallowed from BoundedValue with lower min");
+        static_assert(otherTmax <= Tmax,
+                      "conversion disallowed from BoundedValue with higher max");
+        val_ -= other.getVal();
+        if (val_ < Tmin)
+        {
+            val_ = Tmin;
+        }
+
+        return *this;
+    }
+
+     // run-time checked assignment:
+    BoundedValue& operator- (T const& val) {
+        BOUNDED_VALUE_ASSERT(min_value, max_value, val);
+        val_ = val_ - val;
+        if (val_ < Tmin)
+        {
+            val_ = Tmin;
+        }
+        return *this;
+    }
+
+    T getVal() const
     {
         return val_;
     }

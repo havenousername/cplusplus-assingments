@@ -34,8 +34,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/day.h" />
+		<Unit filename="include/pet.h" />
 		<Unit filename="include/rangedinteger.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/day.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
