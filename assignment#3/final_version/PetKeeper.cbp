@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="PetKeeper" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/PetKeeper" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/PetKeeper" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="include/catch.hpp" />
+		<Unit filename="include/custompetkeeperenumerators.hpp" />
+		<Unit filename="include/day.h" />
+		<Unit filename="include/enumerator.hpp" />
+		<Unit filename="include/enums.hpp" />
+		<Unit filename="include/pet.h" />
+		<Unit filename="include/petkeeper.h" />
+		<Unit filename="include/rangedinteger.hpp" />
+		<Unit filename="include/seqinfileenumerator.hpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="source/day.cpp" />
+		<Unit filename="source/petkeeper.cpp" />
+		<Unit filename="test.txt" />
+		<Unit filename="test00.txt" />
+		<Unit filename="test01.txt" />
+		<Unit filename="test02.1.txt" />
+		<Unit filename="test02.2.txt" />
+		<Unit filename="test02.txt" />
+		<Unit filename="test03.01.txt" />
+		<Unit filename="test03.txt" />
+		<Unit filename="test04.txt" />
+		<Unit filename="test05.01.txt" />
+		<Unit filename="test05.02.txt" />
+		<Unit filename="test05.txt" />
+		<Unit filename="test06.txt" />
+		<Unit filename="test10.txt" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

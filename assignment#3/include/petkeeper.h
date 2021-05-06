@@ -28,6 +28,16 @@ public:
     void daysSimulation();
     std::vector<std::string> getLowestExhalationAlive() const;
 
+    std::vector<Pet*> pets()
+    {
+        return  _pets;
+    }
+
+    std::vector<Day*> days()
+    {
+        return _days;
+    }
+
     ~PetKeeper()
     {
         for (int i = 0; i < _pets.size(); i++)

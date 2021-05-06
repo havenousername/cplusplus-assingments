@@ -1,0 +1,4 @@
+3
+F Nemo 50
+B Hedwig 70
+D Lassie 20

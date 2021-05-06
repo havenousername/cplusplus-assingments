@@ -10,6 +10,9 @@ using std::endl;
 using std::vector;
 using std::string;
 
+#define NORMAL_MODE
+#ifdef NORMAL_MODE
+
 int main()
 {
     cout << "Please enter the name of the file for taking animals and days" << endl;
@@ -29,3 +32,5 @@ int main()
     delete petKeeper;
     return 0;
 }
+
+#endif
