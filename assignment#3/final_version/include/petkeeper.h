@@ -16,9 +16,15 @@ private:
     SeqInFileEnumerator<int> _enor;
     std::string _name;
     std::string _filename;
+    int _mood;
+    void changeMood(int m)
+    {
+        _mood += m;
+    }
+    void changeDayMood(int index);
 public:
     PetKeeper(const std::string& filename, const std::string& name = "Cathy"):
-         _name(name), _petsEnor(filename, 1), _daysEnor(filename), _enor(filename), _filename(filename)
+         _name(name), _petsEnor(filename, 1), _daysEnor(filename), _enor(filename), _filename(filename), _mood(0)
     {
         _pets.clear();
         _days.clear();

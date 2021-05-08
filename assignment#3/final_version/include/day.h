@@ -1,6 +1,8 @@
 #ifndef DAY_H
 #define DAY_H
 
+#include "enums.hpp"
+
 class Fish;
 class Bird;
 class Dog;
@@ -12,6 +14,7 @@ public:
     virtual Day* influence(Fish *p) = 0;
     virtual Day* influence(Bird *p) = 0;
     virtual Day* influence(Dog *p) = 0;
+    virtual char getDay() = 0;
     virtual ~Day() {}
 };
 
@@ -29,6 +32,10 @@ public:
             delete _instance;
             _instance = nullptr;
         }
+    }
+    char getDay() override
+    {
+        return RawDay::GOOD_DAY;
     }
 protected:
     GoodDay() {}
@@ -52,6 +59,10 @@ public:
             _instance = nullptr;
         }
     }
+    char getDay() override
+    {
+        return RawDay::BAD_DAY;
+    }
 protected:
     BadDay() {}
 private:
@@ -72,6 +83,10 @@ public:
             delete _instance;
             _instance = nullptr;
         }
+    }
+    char getDay() override
+    {
+        return RawDay::NORMAL_DAY;
     }
 protected:
     NormalDay() {}

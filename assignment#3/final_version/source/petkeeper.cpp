@@ -43,10 +43,56 @@ void PetKeeper::populate()
     }
 }
 
+void PetKeeper::changeDayMood(int index)
+{
+    switch (_days[index]->getDay())
+        {
+            case RawDay::BAD_DAY :
+                if (_mood > 0)
+                {
+                    _days[index] = NormalDay::instance();
+                }
+                break;
+            case RawDay::NORMAL_DAY:
+                if (_mood > 0)
+                {
+                    _days[index] = GoodDay::instance();
+                }
+                else if (_mood < 0)
+                {
+                    _days[index] = BadDay::instance();
+                }
+                break;
+            case RawDay::GOOD_DAY:
+                if (_mood < 0)
+                {
+                    _days[index] = NormalDay::instance();
+                }
+                break;
+            default:
+                break;
+        }
+}
+
 void PetKeeper::daysSimulation()
 {
     for (int i = 0; i < _days.size(); i++)
     {
+        bool goodPetsCondition = true;
+        for (int j = 0; j < _pets.size(); j++)
+        {
+            //std::cout << "pet name" << _pets[j]->getName() << ", exh: " << _pets[j]->getExhalationLevel() << std::endl;
+            if (_pets[j]->getExhalationLevel() < HealthRange::CRITICAL)
+            {
+                goodPetsCondition = false;
+            }
+        }
+        changeMood(goodPetsCondition ? 1 : - 1);
+        changeDayMood(i);
+
+        //std::cout << "LOG: petkeeper mood - " << _mood << std::endl;
+        //std::cout << "LOG: day mood - " << _days[i]->getDay() << std::endl;
+
         for (int j = 0; j < _pets.size(); j++)
         {
             _pets[j]->react(_days[i]);
@@ -60,19 +106,24 @@ std::vector<std::string> PetKeeper::getLowestExhalationAlive() const
     int exhalation = HealthRange::FULL;
     for (int i = 0; i < _pets.size(); i++)
     {
-        if (_pets[i]->getExhalationLevel() < exhalation)
+        //std::cout  << "LOG:" << " pets level- " << _pets[i]->getExhalationLevel() << ", pets name- " << _pets[i]->getName() << std::endl;
+        if (_pets[i]->getExhalationLevel() < exhalation && _pets[i]->alive())
         {
             exhalation = _pets[i]->getExhalationLevel();
         }
     }
 
+
     for (int i = 0; i < _pets.size(); i++)
     {
-        if (exhalation == _pets[i]->getExhalationLevel() && _pets[i]->alive())
+        if (exhalation == _pets[i]->getExhalationLevel())
         {
+            //std::cout  << "LOG:" << " pets level- " << _pets[i]->getExhalationLevel() << ", pets name- " << _pets[i]->getName() << std::endl;
             lowest.push_back(_pets[i]->getName());
         }
     }
+
+    // std::cout << "LOG: lowest size - " << lowest.size() << ", exhalation - " << exhalation << std::endl;
 
     return lowest;
 }

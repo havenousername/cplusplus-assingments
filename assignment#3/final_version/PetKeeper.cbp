@@ -57,6 +57,15 @@
 		<Unit filename="test05.txt" />
 		<Unit filename="test06.txt" />
 		<Unit filename="test10.txt" />
+		<Unit filename="test11.txt" />
+		<Unit filename="test12.txt" />
+		<Unit filename="test13.txt" />
+		<Unit filename="test14.txt" />
+		<Unit filename="test15.txt" />
+		<Unit filename="test16.txt" />
+		<Unit filename="test17.txt" />
+		<Unit filename="test18.txt" />
+		<Unit filename="test19.txt" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

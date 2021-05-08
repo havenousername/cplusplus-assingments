@@ -12,6 +12,7 @@ enum RawPetType: char
 enum HealthRange: int
 {
     EMPTY = 0,
+    CRITICAL = 5,
     FULL = 100
 };
 

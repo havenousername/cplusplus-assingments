@@ -30,6 +30,11 @@ public:
 
     void changeLevel(int level)
     {
+        if (!alive())
+        {
+            return;
+        }
+
         bool isNegative = level < 0;
         int levl = abs(level);
         if (isNegative)
